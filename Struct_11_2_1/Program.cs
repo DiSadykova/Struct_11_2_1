@@ -10,7 +10,11 @@ namespace Struct_11_2_1
     {
         static void Main(string[] args)
         {
-            LinearEquation linEq = new LinearEquation { k = 2, b = -1 };
+            Console.WriteLine("Введите k");
+            double kFact = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Введите b");
+            double bFact = Convert.ToDouble(Console.ReadLine());
+            LinearEquation linEq = new LinearEquation(kFact, bFact);
             linEq.Root();
             Console.ReadKey();
         }
@@ -18,12 +22,31 @@ namespace Struct_11_2_1
     struct LinearEquation
     {
         public double k;
-        public double b;
 
+        public double b;
+        public LinearEquation(double kFact, double bFact)
+        {
+            k = kFact;
+            b = bFact;
+        }
         public void Root()
         {
-            double x = -b / k;
-            Console.WriteLine(x);
+
+            if (k == 0 && b == 0)
+            {
+                Console.WriteLine("Любое x");
+            }
+            if (k == 0 && b != 0)
+            {
+                Console.WriteLine("Решений нет");
+            }
+            if (k != 0)
+            {
+                double x = -b / k;
+                Console.WriteLine(x);
+            }
         }
+
     }
+
 }
